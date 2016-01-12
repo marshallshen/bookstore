@@ -1,12 +1,21 @@
 // app/routes/books.js
 
 export default Ember.Route.extend({
+  queryParams: {
+    limit: {
+      refreshModel: true
+    }
+  },
 
-  model() {
-    return this.store.findAll('book');
+  model(params) {
+    return this.store.query('book', params);
   },
 
   actions: {
+    showAll() {
+      this.transitionTo({ queryParams: { limit: total }}); // total?
+    },
+
     openCheckoutModal(book) {
       this.controllerFor('application').set('showingModal', true);
       return this.render('modal', {

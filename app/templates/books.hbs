@@ -6,8 +6,9 @@
     <li>
       <strong>{{book.title}}</strong><br><br>
       <em>by</em>
-      {{book.author.name}}
+      {{#link-to 'author' book.author.id class="author" bubbles=false }}{{book.author.name}}{{/link-to}}
     </li>
   </a>
+  <button {{action 'showAll'}}>Show All</button>
   {{/each}}
 </ul>
